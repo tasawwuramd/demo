@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+	FILE *fp;
+	char buffer[30];
+	char check[20];
+	
+	printf("Enter append to append to file and no to start from beginning:");
+	scanf("%s",check);
+	if(strcmp(check,"append") == 0)
+	{
+		fp = fopen("newfile.txt","a");
+	}
+	else
+	{
+		fp = fopen("newfile.txt","w");
+	}
+	do
+	{
+		scanf("%s", buffer);
+		if(strcmp(buffer,"exit") != 0)
+		{
+			if(strcmp(buffer,"newline")==0)
+			{
+				fprintf(fp,"\n");
+			}
+			else
+			{
+				fprintf(fp,"%s ",buffer);
+			}
+			
+		}
+		
+	}
+	while(strcmp(buffer,"exit") != 0);
+	fclose(fp);
+}
